@@ -1,0 +1,10 @@
+read_verilog rtl/sync_fifo.v
+hierarchy -check -top sync_fifo
+proc
+opt
+check
+synth -top sync_fifo
+check
+stat
+write_verilog synth/sync_fifo_synth.v
+write_json synth/sync_fifo_synth.json

@@ -1,0 +1,1512 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.69+286 (git sha1 37f25dae9, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `.\synth\run_synthesis.ys' --
+
+1. Executing Verilog-2005 frontend: rtl/sync_fifo.v
+Parsing Verilog input from `rtl/sync_fifo.v' to AST representation.
+Generating RTLIL representation for module `\sync_fifo'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \sync_fifo
+
+2.2. Analyzing design hierarchy..
+Top module:  \sync_fifo
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$rtl/sync_fifo.v:27$5 in module sync_fifo.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 6 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~2 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+     1/16: $2$memwr$\mem$rtl/sync_fifo.v:37$1_EN[7:0]$24
+     2/16: $2$memwr$\mem$rtl/sync_fifo.v:37$1_DATA[7:0]$23
+     3/16: $2$memwr$\mem$rtl/sync_fifo.v:37$1_ADDR[3:0]$22
+     4/16: $2$memwr$\mem$rtl/sync_fifo.v:49$2_EN[7:0]$27
+     5/16: $2$memwr$\mem$rtl/sync_fifo.v:49$2_DATA[7:0]$26
+     6/16: $2$memwr$\mem$rtl/sync_fifo.v:49$2_ADDR[3:0]$25
+     7/16: $0\count[4:0]
+     8/16: $1$memwr$\mem$rtl/sync_fifo.v:49$2_EN[7:0]$17
+     9/16: $1$memwr$\mem$rtl/sync_fifo.v:49$2_DATA[7:0]$16
+    10/16: $1$memwr$\mem$rtl/sync_fifo.v:49$2_ADDR[3:0]$15
+    11/16: $1$memwr$\mem$rtl/sync_fifo.v:37$1_EN[7:0]$14
+    12/16: $1$memwr$\mem$rtl/sync_fifo.v:37$1_DATA[7:0]$13
+    13/16: $1$memwr$\mem$rtl/sync_fifo.v:37$1_ADDR[3:0]$12
+    14/16: $0\rd_ptr[3:0]
+    15/16: $0\wr_ptr[3:0]
+    16/16: $0\dout[7:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\sync_fifo.\dout' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$133' with positive edge clock.
+Creating register for signal `\sync_fifo.\wr_ptr' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$134' with positive edge clock.
+Creating register for signal `\sync_fifo.\rd_ptr' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$135' with positive edge clock.
+Creating register for signal `\sync_fifo.\count' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$136' with positive edge clock.
+Creating register for signal `\sync_fifo.$memwr$\mem$rtl/sync_fifo.v:37$1_ADDR' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$137' with positive edge clock.
+Creating register for signal `\sync_fifo.$memwr$\mem$rtl/sync_fifo.v:37$1_DATA' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$138' with positive edge clock.
+Creating register for signal `\sync_fifo.$memwr$\mem$rtl/sync_fifo.v:37$1_EN' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$139' with positive edge clock.
+Creating register for signal `\sync_fifo.$memwr$\mem$rtl/sync_fifo.v:49$2_ADDR' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$140' with positive edge clock.
+Creating register for signal `\sync_fifo.$memwr$\mem$rtl/sync_fifo.v:49$2_DATA' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$141' with positive edge clock.
+Creating register for signal `\sync_fifo.$memwr$\mem$rtl/sync_fifo.v:49$2_EN' using process `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+  created $dff cell `$procdff$142' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+Removing empty process `sync_fifo.$proc$rtl/sync_fifo.v:27$5'.
+Cleaned up 2 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+<suppressed ~1 debug messages>
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 74 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Computing hashes of 58 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+<suppressed ~48 debug messages>
+Removed a total of 16 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sync_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$84.
+    dead port 1/2 on $mux $procmux$78.
+    dead port 1/2 on $mux $procmux$72.
+    dead port 1/2 on $mux $procmux$66.
+    dead port 1/2 on $mux $procmux$58.
+    dead port 1/2 on $mux $procmux$50.
+Removed 6 multiplexer ports.
+<suppressed ~40 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sync_fifo.
+    Consolidated identical input bits for $mux cell $procmux$69:
+      Old ports: A=8'00000000, B=8'11111111, Y=$procmux$69_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$69_Y [0]
+      New connections: $procmux$69_Y [7:1] = { $procmux$69_Y [0] $procmux$69_Y [0] $procmux$69_Y [0] $procmux$69_Y [0] $procmux$69_Y [0] $procmux$69_Y [0] $procmux$69_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$47:
+      Old ports: A=8'00000000, B=8'11111111, Y=$procmux$47_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$47_Y [0]
+      New connections: $procmux$47_Y [7:1] = { $procmux$47_Y [0] $procmux$47_Y [0] $procmux$47_Y [0] $procmux$47_Y [0] $procmux$47_Y [0] $procmux$47_Y [0] $procmux$47_Y [0] }
+    New ctrl vector for $pmux cell $procmux$127: $auto$opt_reduce.cc:137:opt_pmux$146
+  Optimizing cells in module \sync_fifo.
+    Consolidated identical input bits for $mux cell $procmux$104:
+      Old ports: A=$2$memwr$\mem$rtl/sync_fifo.v:37$1_EN[7:0]$24, B=8'00000000, Y=$procmux$104_Y
+      New ports: A=$procmux$47_Y [0], B=1'0, Y=$procmux$104_Y [0]
+      New connections: $procmux$104_Y [7:1] = { $procmux$104_Y [0] $procmux$104_Y [0] $procmux$104_Y [0] $procmux$104_Y [0] $procmux$104_Y [0] $procmux$104_Y [0] $procmux$104_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$95:
+      Old ports: A=$2$memwr$\mem$rtl/sync_fifo.v:49$2_EN[7:0]$27, B=8'00000000, Y=$procmux$95_Y
+      New ports: A=$procmux$69_Y [0], B=1'0, Y=$procmux$95_Y [0]
+      New connections: $procmux$95_Y [7:1] = { $procmux$95_Y [0] $procmux$95_Y [0] $procmux$95_Y [0] $procmux$95_Y [0] $procmux$95_Y [0] $procmux$95_Y [0] $procmux$95_Y [0] }
+  Optimizing cells in module \sync_fifo.
+Performed a total of 5 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 53 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Computing hashes of 51 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$133 ($dff) from module sync_fifo (D = $procmux$127_Y, Q = \dout, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$147 ($sdff) from module sync_fifo (D = $memrd$\mem$rtl/sync_fifo.v:50$37_DATA, Q = \dout).
+Adding SRST signal on $procdff$134 ($dff) from module sync_fifo (D = $procmux$120_Y, Q = \wr_ptr, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:337:slice$149 ($sdff) from module sync_fifo (D = $procmux$120_Y, Q = \wr_ptr).
+Adding SRST signal on $procdff$135 ($dff) from module sync_fifo (D = $procmux$113_Y, Q = \rd_ptr, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:337:slice$153 ($sdff) from module sync_fifo (D = $procmux$113_Y, Q = \rd_ptr).
+Adding SRST signal on $procdff$136 ($dff) from module sync_fifo (D = $procmux$88_Y, Q = \count, rval = 5'00000).
+Adding EN signal on $auto$ff.cc:337:slice$157 ($sdff) from module sync_fifo (D = $procmux$88_Y, Q = \count).
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 11 unused cells and 75 unused wires.
+<suppressed ~12 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+<suppressed ~3 debug messages>
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sync_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~32 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sync_fifo.
+    New ctrl vector for $pmux cell $procmux$120: $auto$opt_reduce.cc:137:opt_pmux$162
+    New ctrl vector for $pmux cell $procmux$113: $auto$opt_reduce.cc:137:opt_pmux$164
+  Optimizing cells in module \sync_fifo.
+Performed a total of 2 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 45 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Computing hashes of 44 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+4.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sync_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+4.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sync_fifo.
+Performed a total of 0 changes.
+
+4.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 44 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+4.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+
+4.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+4.23. Finished fast OPT passes. (There is nothing left to do.)
+
+5. Executing CHECK pass (checking for obvious problems).
+Checking module sync_fifo...
+Found and reported 0 problems.
+
+6. Executing SYNTH pass.
+
+6.1. Executing HIERARCHY pass (managing design hierarchy).
+
+6.1.1. Analyzing design hierarchy..
+Top module:  \sync_fifo
+
+6.1.2. Analyzing design hierarchy..
+Top module:  \sync_fifo
+Removed 0 unused modules.
+
+6.2. Executing PROC pass (convert processes to netlists).
+
+6.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+6.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+6.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+6.2.4. Executing PROC_INIT pass (extract init attributes).
+
+6.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+6.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+6.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+6.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+6.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+6.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+6.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+6.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.4. Executing CHECK pass (checking for obvious problems).
+Checking module sync_fifo...
+Found and reported 0 problems.
+
+6.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+
+6.6. Executing OPT pass (performing simple optimizations).
+
+6.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 44 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sync_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+6.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sync_fifo.
+Performed a total of 0 changes.
+
+6.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 44 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+
+6.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.6.9. Finished fast OPT passes. (There is nothing left to do.)
+
+6.7. Executing FSM pass (extract and optimize FSM).
+
+6.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+6.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+6.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+
+6.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+6.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+6.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+6.8. Executing OPT pass (performing simple optimizations).
+
+6.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 44 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sync_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+6.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sync_fifo.
+Performed a total of 0 changes.
+
+6.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 44 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+
+6.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.8.9. Finished fast OPT passes. (There is nothing left to do.)
+
+6.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 27 bits (of 32) from port Y of cell sync_fifo.$add$rtl/sync_fifo.v:51$39 ($add).
+Removed top 28 bits (of 32) from mux cell sync_fifo.$ternary$rtl/sync_fifo.v:51$40 ($mux).
+Removed top 27 bits (of 32) from port Y of cell sync_fifo.$add$rtl/sync_fifo.v:52$42 ($add).
+Removed top 28 bits (of 32) from mux cell sync_fifo.$ternary$rtl/sync_fifo.v:52$43 ($mux).
+Removed top 1 bits (of 2) from port B of cell sync_fifo.$procmux$129_CMP0 ($eq).
+Removed top 1 bits (of 5) from port Y of cell sync_fifo.$add$rtl/sync_fifo.v:51$39 ($add).
+Removed top 1 bits (of 5) from port Y of cell sync_fifo.$add$rtl/sync_fifo.v:52$42 ($add).
+Removed top 28 bits (of 32) from wire sync_fifo.$ternary$rtl/sync_fifo.v:44$35_Y.
+Removed top 28 bits (of 32) from wire sync_fifo.$add$rtl/sync_fifo.v:44$34_Y.
+Removed top 28 bits (of 32) from wire sync_fifo.$ternary$rtl/sync_fifo.v:38$30_Y.
+Removed top 28 bits (of 32) from wire sync_fifo.$add$rtl/sync_fifo.v:38$29_Y.
+
+6.10. Executing PEEPOPT pass (run peephole optimizers).
+
+6.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+6.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module sync_fifo:
+  creating $macc model for $add$rtl/sync_fifo.v:52$42 ($add).
+  creating $macc model for $add$rtl/sync_fifo.v:51$39 ($add).
+  creating $macc model for $sub$rtl/sync_fifo.v:45$36 ($sub).
+  creating $macc model for $add$rtl/sync_fifo.v:39$31 ($add).
+  creating $alu model for $macc $add$rtl/sync_fifo.v:39$31.
+  creating $alu model for $macc $sub$rtl/sync_fifo.v:45$36.
+  creating $alu model for $macc $add$rtl/sync_fifo.v:51$39.
+  creating $alu model for $macc $add$rtl/sync_fifo.v:52$42.
+  creating $alu cell for $add$rtl/sync_fifo.v:52$42: $auto$alumacc.cc:578:replace_alu$169
+  creating $alu cell for $add$rtl/sync_fifo.v:51$39: $auto$alumacc.cc:578:replace_alu$172
+  creating $alu cell for $sub$rtl/sync_fifo.v:45$36: $auto$alumacc.cc:578:replace_alu$175
+  creating $alu cell for $add$rtl/sync_fifo.v:39$31: $auto$alumacc.cc:578:replace_alu$178
+  created 4 $alu and 0 $macc cells.
+
+6.13. Executing SHARE pass (SAT-based resource sharing).
+
+6.14. Executing OPT pass (performing simple optimizations).
+
+6.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 44 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sync_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+6.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sync_fifo.
+Performed a total of 0 changes.
+
+6.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 44 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+
+6.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+6.15. Executing MEMORY pass.
+
+6.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+6.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+6.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing sync_fifo.mem write port 0.
+  Analyzing sync_fifo.mem write port 1.
+
+6.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+6.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\mem'[0] in module `\sync_fifo':
+    merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: non-transparent.
+
+6.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 1 unused cells and 9 unused wires.
+<suppressed ~2 debug messages>
+
+6.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating write ports of memory sync_fifo.mem by address:
+  Merging ports 0, 1 (address \wr_ptr).
+
+6.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+6.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 4 unused cells and 4 unused wires.
+<suppressed ~5 debug messages>
+
+6.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+6.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+
+6.17. Executing OPT pass (performing simple optimizations).
+
+6.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+<suppressed ~10 debug messages>
+
+6.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 30 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 1 unused cells and 10 unused wires.
+<suppressed ~2 debug messages>
+
+6.17.5. Finished fast OPT passes.
+
+6.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \mem in module \sync_fifo:
+  created 16 $dff cells and 0 static cells of width 8.
+Extracted data FF from read port 0 of sync_fifo.mem: $\mem$rdreg[0]
+  read interface: 1 $dff and 15 $mux cells.
+  write interface: 16 write mux blocks.
+
+6.19. Executing OPT pass (performing simple optimizations).
+
+6.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+<suppressed ~8 debug messages>
+
+6.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 120 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sync_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~58 debug messages>
+
+6.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sync_fifo.
+Performed a total of 0 changes.
+
+6.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 120 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.19.6. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $mux $procmux$88 in front of them:
+        $auto$alumacc.cc:578:replace_alu$175
+        $auto$alumacc.cc:578:replace_alu$178
+
+6.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 0 unused cells and 42 unused wires.
+<suppressed ~1 debug messages>
+
+6.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+<suppressed ~2 debug messages>
+
+6.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sync_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~58 debug messages>
+
+6.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sync_fifo.
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:244:merge_operators$402:
+      Old ports: A=5'11111, B=5'00001, Y=$auto$rtlil.cc:3381:Mux$403
+      New ports: A=1'1, B=1'0, Y=$auto$rtlil.cc:3381:Mux$403 [1]
+      New connections: { $auto$rtlil.cc:3381:Mux$403 [4:2] $auto$rtlil.cc:3381:Mux$403 [0] } = { $auto$rtlil.cc:3381:Mux$403 [1] $auto$rtlil.cc:3381:Mux$403 [1] $auto$rtlil.cc:3381:Mux$403 [1] 1'1 }
+  Optimizing cells in module \sync_fifo.
+Performed a total of 1 changes.
+
+6.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 119 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.19.14. Executing OPT_SHARE pass.
+
+6.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\mem[0]$194 ($dff) from module sync_fifo (D = \din, Q = \mem[0]).
+Adding EN signal on $memory\mem[1]$196 ($dff) from module sync_fifo (D = \din, Q = \mem[1]).
+Adding EN signal on $memory\mem[2]$198 ($dff) from module sync_fifo (D = \din, Q = \mem[2]).
+Adding EN signal on $memory\mem[3]$200 ($dff) from module sync_fifo (D = \din, Q = \mem[3]).
+Adding EN signal on $memory\mem[4]$202 ($dff) from module sync_fifo (D = \din, Q = \mem[4]).
+Adding EN signal on $memory\mem[5]$204 ($dff) from module sync_fifo (D = \din, Q = \mem[5]).
+Adding EN signal on $memory\mem[6]$206 ($dff) from module sync_fifo (D = \din, Q = \mem[6]).
+Adding EN signal on $memory\mem[7]$208 ($dff) from module sync_fifo (D = \din, Q = \mem[7]).
+Adding EN signal on $memory\mem[8]$210 ($dff) from module sync_fifo (D = \din, Q = \mem[8]).
+Adding EN signal on $memory\mem[9]$212 ($dff) from module sync_fifo (D = \din, Q = \mem[9]).
+Adding EN signal on $memory\mem[10]$214 ($dff) from module sync_fifo (D = \din, Q = \mem[10]).
+Adding EN signal on $memory\mem[11]$216 ($dff) from module sync_fifo (D = \din, Q = \mem[11]).
+Adding EN signal on $memory\mem[12]$218 ($dff) from module sync_fifo (D = \din, Q = \mem[12]).
+Adding EN signal on $memory\mem[13]$220 ($dff) from module sync_fifo (D = \din, Q = \mem[13]).
+Adding EN signal on $memory\mem[14]$222 ($dff) from module sync_fifo (D = \din, Q = \mem[14]).
+Adding EN signal on $memory\mem[15]$224 ($dff) from module sync_fifo (D = \din, Q = \mem[15]).
+
+6.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 16 unused cells and 18 unused wires.
+<suppressed ~17 debug messages>
+
+6.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+<suppressed ~1 debug messages>
+
+6.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sync_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~24 debug messages>
+
+6.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sync_fifo.
+Performed a total of 0 changes.
+
+6.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 103 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Removed a total of 0 cells.
+
+6.19.22. Executing OPT_SHARE pass.
+
+6.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+
+6.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.19.26. Finished fast OPT passes. (There is nothing left to do.)
+
+6.20. Executing TECHMAP pass (map to technology primitives).
+
+6.20.1. Executing Verilog-2005 frontend: C:\eda\oss-cad-suite\bin\../share/yosys/techmap.v
+Parsing Verilog input from `C:\eda\oss-cad-suite\bin\../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+6.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$b18e16801adf491a64caa0542270798e5d4ac6b6\_90_alu for cells of type $alu.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000101 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000100 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~484 debug messages>
+
+6.21. Executing OPT pass (performing simple optimizations).
+
+6.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+<suppressed ~123 debug messages>
+
+6.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 419 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Computing hashes of 394 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Computing hashes of 392 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+<suppressed ~81 debug messages>
+Removed a total of 27 cells.
+
+6.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 7 unused cells and 169 unused wires.
+<suppressed ~8 debug messages>
+
+6.21.5. Finished fast OPT passes.
+
+6.22. Executing ABC pass (technology mapping using ABC).
+
+6.22.1. Summary of detected clock domains:
+  20 cells in clk=\clk, en=$memory\mem$wren[15][0][0]$y$396, arst={ }, srst={ }
+  11 cells in clk=\clk, en=$memory\mem$wren[14][0][0]$y$390, arst={ }, srst={ }
+  17 cells in clk=\clk, en=$memory\mem$wren[13][0][0]$y$384, arst={ }, srst={ }
+  11 cells in clk=\clk, en=$memory\mem$wren[12][0][0]$y$378, arst={ }, srst={ }
+  17 cells in clk=\clk, en=$memory\mem$wren[11][0][0]$y$370, arst={ }, srst={ }
+  11 cells in clk=\clk, en=$memory\mem$wren[10][0][0]$y$364, arst={ }, srst={ }
+  17 cells in clk=\clk, en=$memory\mem$wren[9][0][0]$y$358, arst={ }, srst={ }
+  11 cells in clk=\clk, en=$memory\mem$wren[8][0][0]$y$352, arst={ }, srst={ }
+  17 cells in clk=\clk, en=$memory\mem$wren[7][0][0]$y$342, arst={ }, srst={ }
+  11 cells in clk=\clk, en=$memory\mem$wren[6][0][0]$y$336, arst={ }, srst={ }
+  17 cells in clk=\clk, en=$memory\mem$wren[5][0][0]$y$330, arst={ }, srst={ }
+  11 cells in clk=\clk, en=$memory\mem$wren[4][0][0]$y$324, arst={ }, srst={ }
+  17 cells in clk=\clk, en=$memory\mem$wren[3][0][0]$y$314, arst={ }, srst={ }
+  11 cells in clk=\clk, en=$memory\mem$wren[2][0][0]$y$306, arst={ }, srst={ }
+  17 cells in clk=\clk, en=$memory\mem$wren[1][0][0]$y$296, arst={ }, srst={ }
+  13 cells in clk=\clk, en=$memory\mem$wren[0][0][0]$y$286, arst={ }, srst={ }
+  43 cells in clk=\clk, en=$auto$simple.cc:193:make_patterns_logic$159, arst={ }, srst=\rst
+  28 cells in clk=\clk, en=$auto$simple.cc:193:make_patterns_logic$151, arst={ }, srst=\rst
+  85 cells in clk=\clk, en=$auto$opt_reduce.cc:137:opt_pmux$146, arst={ }, srst=\rst
+
+6.22.2. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[15][0][0]$y$396
+
+6.22.3. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[14][0][0]$y$390
+
+6.22.4. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[13][0][0]$y$384
+
+6.22.5. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[12][0][0]$y$378
+
+6.22.6. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[11][0][0]$y$370
+
+6.22.7. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[10][0][0]$y$364
+
+6.22.8. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[9][0][0]$y$358
+
+6.22.9. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[8][0][0]$y$352
+
+6.22.10. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[7][0][0]$y$342
+
+6.22.11. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[6][0][0]$y$336
+
+6.22.12. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[5][0][0]$y$330
+
+6.22.13. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[4][0][0]$y$324
+
+6.22.14. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[3][0][0]$y$314
+
+6.22.15. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[2][0][0]$y$306
+
+6.22.16. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[1][0][0]$y$296
+
+6.22.17. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $memory\mem$wren[0][0][0]$y$286
+
+6.22.18. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:193:make_patterns_logic$159, synchronously reset by \rst
+
+6.22.19. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$simple.cc:193:make_patterns_logic$151, synchronously reset by \rst
+
+6.22.20. Extracting gate netlist of module `\sync_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by $auto$opt_reduce.cc:137:opt_pmux$146, synchronously reset by \rst
+
+6.22.20.1. Executed ABC.
+Extracted 12 gates and 33 wires to a netlist network with 20 inputs and 9 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        7
+ABC RESULTS:               NOR cells:        2
+ABC RESULTS:        internal signals:        4
+ABC RESULTS:           input signals:       20
+ABC RESULTS:          output signals:        9
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 3 gates and 9 wires to a netlist network with 6 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        6
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 9 gates and 27 wires to a netlist network with 18 inputs and 8 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        7
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 3 gates and 9 wires to a netlist network with 6 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        6
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 9 gates and 27 wires to a netlist network with 18 inputs and 8 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        7
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 3 gates and 9 wires to a netlist network with 6 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        6
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 9 gates and 27 wires to a netlist network with 18 inputs and 8 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        7
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 3 gates and 9 wires to a netlist network with 6 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        6
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 9 gates and 27 wires to a netlist network with 18 inputs and 8 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        7
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 3 gates and 9 wires to a netlist network with 6 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        6
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 9 gates and 27 wires to a netlist network with 18 inputs and 8 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        7
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 3 gates and 9 wires to a netlist network with 6 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        6
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 9 gates and 27 wires to a netlist network with 18 inputs and 8 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        7
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 3 gates and 9 wires to a netlist network with 6 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        6
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 9 gates and 27 wires to a netlist network with 18 inputs and 8 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               MUX cells:        7
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 5 gates and 13 wires to a netlist network with 8 inputs and 4 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        4
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        8
+ABC RESULTS:          output signals:        4
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 38 gates and 45 wires to a netlist network with 7 inputs and 12 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        4
+ABC RESULTS:            ANDNOT cells:        3
+ABC RESULTS:              NAND cells:        7
+ABC RESULTS:               NOR cells:        2
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:                OR cells:        3
+ABC RESULTS:             ORNOT cells:        2
+ABC RESULTS:              XNOR cells:        4
+ABC RESULTS:               XOR cells:        3
+ABC RESULTS:        internal signals:       26
+ABC RESULTS:           input signals:        7
+ABC RESULTS:          output signals:       12
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 24 gates and 32 wires to a netlist network with 7 inputs and 16 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        3
+ABC RESULTS:            ANDNOT cells:        4
+ABC RESULTS:               NOR cells:        1
+ABC RESULTS:               NOT cells:        5
+ABC RESULTS:                OR cells:        2
+ABC RESULTS:              XNOR cells:        2
+ABC RESULTS:        internal signals:        9
+ABC RESULTS:           input signals:        7
+ABC RESULTS:          output signals:       16
+Removing temp directory.
+
+6.22.20.1. Executed ABC.
+Extracted 73 gates and 144 wires to a netlist network with 70 inputs and 13 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.22.20.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:               MUX cells:       56
+ABC RESULTS:              NAND cells:        1
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:                OR cells:        1
+ABC RESULTS:              XNOR cells:        1
+ABC RESULTS:               XOR cells:        2
+ABC RESULTS:        internal signals:       61
+ABC RESULTS:           input signals:       70
+ABC RESULTS:          output signals:       13
+Removing temp directory.
+Removing global temp directory.
+
+6.23. Executing OPT pass (performing simple optimizations).
+
+6.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sync_fifo.
+
+6.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sync_fifo'.
+Computing hashes of 358 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+Computing hashes of 347 cells of `\sync_fifo'.
+Finding duplicate cells in `\sync_fifo'.
+<suppressed ~33 debug messages>
+Removed a total of 11 cells.
+
+6.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sync_fifo..
+Removed 0 unused cells and 406 unused wires.
+<suppressed ~1 debug messages>
+
+6.23.5. Finished fast OPT passes.
+
+6.24. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `sync_fifo'. Setting top module to sync_fifo.
+
+6.24.1. Analyzing design hierarchy..
+Top module:  \sync_fifo
+
+6.24.2. Analyzing design hierarchy..
+Top module:  \sync_fifo
+Removed 0 unused modules.
+
+6.25. Printing statistics.
+
+=== sync_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      212 wires
+      383 wire bits
+       27 public wires
+      163 public wire bits
+        8 ports
+       22 port bits
+      347 cells
+        7   $_ANDNOT_
+       32   $_AND_
+      128   $_DFFE_PP_
+      120   $_MUX_
+        8   $_NAND_
+        5   $_NOR_
+        6   $_NOT_
+        2   $_ORNOT_
+        6   $_OR_
+       21   $_SDFFE_PP0P_
+        7   $_XNOR_
+        5   $_XOR_
+
+6.26. Executing CHECK pass (checking for obvious problems).
+Checking module sync_fifo...
+Found and reported 0 problems.
+
+7. Executing CHECK pass (checking for obvious problems).
+Checking module sync_fifo...
+Found and reported 0 problems.
+
+8. Printing statistics.
+
+=== sync_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      212 wires
+      383 wire bits
+       27 public wires
+      163 public wire bits
+        8 ports
+       22 port bits
+      347 cells
+        7   $_ANDNOT_
+       32   $_AND_
+      128   $_DFFE_PP_
+      120   $_MUX_
+        8   $_NAND_
+        5   $_NOR_
+        6   $_NOT_
+        2   $_ORNOT_
+        6   $_OR_
+       21   $_SDFFE_PP0P_
+        7   $_XNOR_
+        5   $_XOR_
+
+9. Executing Verilog backend.
+
+9.1. Executing BMUXMAP pass.
+
+9.2. Executing DEMUXMAP pass.
+Dumping module `\sync_fifo'.
+
+10. Executing JSON backend.
+
+End of script. Logfile hash: e93bda78af
+Yosys 0.69+286 (git sha1 37f25dae9, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 1% 24x opt_expr (0 sec), 1% 20x opt_clean (0 sec), ...
