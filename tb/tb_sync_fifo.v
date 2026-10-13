@@ -70,7 +70,7 @@ module tb_sync_fifo;
     endtask
 
     initial begin
-    
+
     $dumpfile("waveforms/fifo_waveform.vcd");
      $dumpvars(0, tb_sync_fifo);
         rst = 1;
@@ -133,6 +133,83 @@ module tb_sync_fifo;
             errors = errors + 1;
         end
 
+               // Test 6: Read while empty
+        // A read must not change the empty FIFO's occupancy.
+        @(negedge clk);
+        wr_en = 0;
+        rd_en = 1;
+        @(posedge clk);
+        #1;
+
+        if (empty !== 1'b1) begin
+            $display("FAIL: FIFO should remain empty after read while empty");
+            errors = errors + 1;
+        end else begin
+            $display("PASS: read while empty keeps FIFO empty");
+        end
+
+        @(negedge clk);
+        rd_en = 0;
+
+        // Test 7: Write while full
+        // Fill all 16 entries with values 0 to 15.
+        for (integer k = 0; k < 16; k = k + 1)
+            write_data(k);
+
+        // Attempt an additional write while full.
+        write_data(200);
+
+        if (full !== 1'b1) begin
+            $display("FAIL: FIFO should remain full after write while full");
+            errors = errors + 1;
+        end else begin
+            $display("PASS: write while full keeps FIFO full");
+        end
+
+        // Confirm the original entries remain unchanged.
+        for (integer m = 0; m < 16; m = m + 1)
+            read_data(m);
+
+        if (empty !== 1'b1) begin
+            $display("FAIL: FIFO should be empty after boundary test");
+            errors = errors + 1;
+        end
+
+        // Test 8: Simultaneous read and write
+        write_data(42);
+        write_data(55);
+
+        @(negedge clk);
+        din = 77;
+        wr_en = 1;
+        rd_en = 1;
+
+        @(posedge clk);
+        #1;
+
+        if (dout !== 42) begin
+            $display("FAIL: simultaneous read/write expected 42, got %0d", dout);
+            errors = errors + 1;
+        end else begin
+            $display("PASS: simultaneous read/write returns oldest value 42");
+        end
+
+        @(negedge clk);
+        wr_en = 0;
+        rd_en = 0;
+
+        // Remaining FIFO order should be 55, then 77.
+        read_data(55);
+        read_data(77);
+
+        if (empty !== 1'b1) begin
+            $display("FAIL: FIFO should be empty after simultaneous read/write test");
+            errors = errors + 1;
+        end else begin
+            $display("PASS: FIFO empty after simultaneous read/write test");
+        end
+
+        // Final regression result
         if (errors == 0)
             $display("ALL TESTS PASSED");
         else
